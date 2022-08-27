@@ -15,7 +15,7 @@ export class Movie {
   title: string;
 
   @Column()
-  year: string;
+  year: number;
 
   @Column()
   genre: string;

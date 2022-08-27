@@ -10,13 +10,21 @@ export class MoviesRepository implements IMoviesRepository {
     this.repository = appDataSource.getRepository(Movie);
   }
 
+  async findById(id: number): Promise<Movie> {
+    return this.repository.findOne({where: {id}});
+  }
+
+  async findByYear(year: number): Promise<Movie[]> {
+    return this.repository.find({where: {year}});
+  }
+
   async create(
     payload: Omit<Movie, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>,
   ): Promise<Movie> {
-    const user = this.repository.create(payload);
+    const movie = this.repository.create(payload);
 
-    await this.repository.save(user);
+    await this.repository.save(movie);
 
-    return user;
+    return movie;
   }
 }

@@ -1,7 +1,6 @@
 import {Router} from 'express';
+import {moviesRouter} from './movies.routes';
 
 export const router = Router();
 
-router.get('/', (request, response) =>
-  response.json({message: 'Hello World!'}),
-);
+router.use('/movies', moviesRouter);

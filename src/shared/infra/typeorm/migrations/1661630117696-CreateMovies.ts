@@ -17,26 +17,32 @@ export class createMovies1661630117696 implements MigrationInterface {
           {
             name: 'title',
             type: 'varchar',
+            isNullable: false,
           },
           {
             name: 'year',
             type: 'numeric',
+            isNullable: false,
           },
           {
             name: 'genre',
             type: 'varchar',
+            isNullable: false,
           },
           {
             name: 'director',
             type: 'varchar',
+            isNullable: false,
           },
           {
             name: 'actors',
             type: 'varchar',
+            isNullable: false,
           },
           {
             name: 'runtime',
             type: 'varchar',
+            isNullable: false,
           },
           {
             name: 'createdAt',

@@ -4,6 +4,8 @@ import express from 'express';
 import {appDataSource} from '../typeorm/data-source';
 import {router} from './routes';
 
+import '@shared/container';
+
 appDataSource.setOptions({host: 'database'});
 appDataSource
   .initialize()
