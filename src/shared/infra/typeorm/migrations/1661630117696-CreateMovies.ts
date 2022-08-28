@@ -17,6 +17,7 @@ export class createMovies1661630117696 implements MigrationInterface {
           {
             name: 'title',
             type: 'varchar',
+            isUnique: true,
             isNullable: false,
           },
           {
@@ -53,11 +54,6 @@ export class createMovies1661630117696 implements MigrationInterface {
             name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
-          },
-          {
-            name: 'deletedAt',
-            type: 'timestamp',
-            isNullable: true,
           },
         ],
       }),

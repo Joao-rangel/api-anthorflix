@@ -2,20 +2,16 @@ import {Movie} from '@modules/movies/infra/typeorm/Movie.entity';
 import {IMoviesRepository} from '@modules/movies/interfaces/IMoviesRepository';
 import {injectable, inject} from 'tsyringe';
 
-interface IServiceRequest {
-  year: number;
-}
-
 @injectable()
-export class ListByYearMovieService {
+export class DeleteMovieService {
   constructor(
     @inject('MoviesRepository')
     private moviesRepository: IMoviesRepository,
   ) {}
 
-  async execute({year}: IServiceRequest): Promise<Movie[]> {
-    const movie = await this.moviesRepository.listByYear(year);
+  async execute(id: Movie['id']): Promise<void> {
+    console.log(id);
 
-    return movie;
+    return this.moviesRepository.delete(id);
   }
 }

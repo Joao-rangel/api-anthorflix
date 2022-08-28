@@ -1,6 +1,10 @@
 import {Repository} from 'typeorm';
 import {appDataSource} from '../../../../shared/infra/typeorm/data-source';
-import {IMoviesRepository} from '../../interfaces/IMoviesRepository';
+import {
+  ICreateMovieRequest,
+  IMoviesRepository,
+  IUpdateMovieRequest,
+} from '../../interfaces/IMoviesRepository';
 import {Movie} from './Movie.entity';
 
 export class MoviesRepository implements IMoviesRepository {
@@ -14,17 +18,29 @@ export class MoviesRepository implements IMoviesRepository {
     return this.repository.findOne({where: {id}});
   }
 
-  async findByYear(year: number): Promise<Movie[]> {
+  async findByTitle(title: string): Promise<Movie> {
+    return this.repository.findOne({where: {title}});
+  }
+
+  async listByYear(year: number): Promise<Movie[]> {
     return this.repository.find({where: {year}});
   }
 
-  async create(
-    payload: Omit<Movie, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>,
-  ): Promise<Movie> {
+  async create(payload: ICreateMovieRequest): Promise<Movie> {
     const movie = this.repository.create(payload);
 
     await this.repository.save(movie);
 
     return movie;
+  }
+
+  async update({id, ...payload}: IUpdateMovieRequest): Promise<Movie> {
+    await this.repository.update(id, payload);
+
+    return this.repository.findOne({where: {id}});
+  }
+
+  async delete(id: Movie['id']): Promise<void> {
+    await this.repository.delete({id});
   }
 }

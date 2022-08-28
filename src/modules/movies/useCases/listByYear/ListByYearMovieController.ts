@@ -8,8 +8,8 @@ export class ListByYearMovieController {
 
     const listByYearMovieService = container.resolve(ListByYearMovieService);
 
-    const movie = await listByYearMovieService.execute({year: Number(year)});
+    const movies = await listByYearMovieService.execute({year: Number(year)});
 
-    return response.status(201).json({movie});
+    return response.status(200).json({movies});
   }
 }

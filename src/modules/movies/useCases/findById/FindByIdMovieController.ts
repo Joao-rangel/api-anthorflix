@@ -10,6 +10,6 @@ export class FindByIdMovieController {
 
     const movie = await findByIdMovieService.execute({id: Number(id)});
 
-    return response.status(201).json({movie});
+    return response.json({movie});
   }
 }
