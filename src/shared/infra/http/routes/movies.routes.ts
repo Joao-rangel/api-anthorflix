@@ -4,6 +4,7 @@ import {ListByYearMovieController} from '@modules/movies/useCases/listByYear/Lis
 import {CreateMovieController} from '@modules/movies/useCases/create/CreateMovieController';
 import {DeleteMovieController} from '@modules/movies/useCases/delete/DeleteMovieController';
 import {UpdateMovieController} from '@modules/movies/useCases/update/UpdateMovieController';
+import {SearchByTitleMovieController} from '@modules/movies/useCases/searchByTitle/SearchByTitleMovieController';
 
 export const moviesRouter = Router();
 
@@ -12,8 +13,10 @@ const listByYearMovieController = new ListByYearMovieController();
 const createMovieController = new CreateMovieController();
 const updateMovieController = new UpdateMovieController();
 const deleteMovieController = new DeleteMovieController();
+const searchByTitleMovieController = new SearchByTitleMovieController();
 
 moviesRouter.get('/', listByYearMovieController.handle);
+moviesRouter.get('/search', searchByTitleMovieController.handle);
 moviesRouter.post('/', createMovieController.handle);
 moviesRouter.patch('/:id', updateMovieController.handle);
 moviesRouter.delete('/:id', deleteMovieController.handle);

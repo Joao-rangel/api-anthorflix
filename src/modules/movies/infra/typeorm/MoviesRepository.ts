@@ -1,4 +1,4 @@
-import {Repository} from 'typeorm';
+import {Repository, Like} from 'typeorm';
 import {appDataSource} from '../../../../shared/infra/typeorm/data-source';
 import {
   ICreateMovieRequest,
@@ -19,7 +19,11 @@ export class MoviesRepository implements IMoviesRepository {
   }
 
   async findByTitle(title: string): Promise<Movie> {
-    return this.repository.findOne({where: {title}});
+    return this.repository.findOne({
+      where: {
+        title: Like(`%${title}%`),
+      },
+    });
   }
 
   async listByYear(year: number): Promise<Movie[]> {
