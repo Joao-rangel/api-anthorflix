@@ -10,8 +10,6 @@ export class DeleteMovieService {
   ) {}
 
   async execute(id: Movie['id']): Promise<void> {
-    console.log(id);
-
     return this.moviesRepository.delete(id);
   }
 }

@@ -17,6 +17,9 @@ export class Movie {
   @Column()
   year: number;
 
+  @Column({default: 0})
+  rate: number;
+
   @Column()
   genre: string;
 
@@ -28,6 +31,12 @@ export class Movie {
 
   @Column()
   runtime: string;
+
+  @Column()
+  poster: string;
+
+  @Column()
+  plot: string;
 
   @CreateDateColumn()
   createdAt: Date;

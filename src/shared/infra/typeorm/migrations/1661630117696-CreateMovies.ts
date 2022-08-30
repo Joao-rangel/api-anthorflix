@@ -26,6 +26,12 @@ export class createMovies1661630117696 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: 'rate',
+            type: 'numeric',
+            isNullable: false,
+            default: 0,
+          },
+          {
             name: 'genre',
             type: 'varchar',
             isNullable: false,
@@ -42,6 +48,16 @@ export class createMovies1661630117696 implements MigrationInterface {
           },
           {
             name: 'runtime',
+            type: 'varchar',
+            isNullable: false,
+          },
+          {
+            name: 'poster',
+            type: 'varchar',
+            isNullable: false,
+          },
+          {
+            name: 'plot',
             type: 'varchar',
             isNullable: false,
           },
